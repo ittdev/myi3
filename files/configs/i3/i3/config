@@ -29,8 +29,8 @@ bindsym $mod+d layout toggle split
 #exec_always --no-startup-id xinput set-prop "DELL07E6:00 06CB:76AF Touchpad" "libinput Natural Scrolling Enabled" 1
 
 bindsym $mod+Shift+Return exec gnome-terminal
-bindsym $mod+Shift+w exec google-chrome-stable
-bindsym $mod+Shift+f exec gnome-terminal -e ranger
+bindsym $mod+Shift+w exec chromium
+bindsym $mod+Shift+f exec pcmanfm 
 bindsym $mod+Shift+e exec leafpad
 
 bindsym $mod+space --release exec "rofi -combi-modi drun,window,ssh -show combi -modi combi"
@@ -40,7 +40,10 @@ bindsym $mod+Ctrl+p exec pavucontrol
 bindsym $mod+Ctrl+b exec gnome-terminal -e 'bmenu'
 bindsym $mod+Print --release exec --no-startup-id flameshot gui
 
+
 # Autostart applications
+exec --no-startup-id setxkbmap "us,ru" ",winkeys" "grp:alt_shift_toggle,grp_led:scroll"
+exec_always --no-startup-id xrandr --output DVI-D-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
@@ -210,8 +213,8 @@ set_from_resource $term_color15    color15
 # Start i3bar 
 bar {
 	i3bar_command i3bar
-	status_command i3blocks
-	position bottom
+	status_command i3status
+	position top
 
       # please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 	# tray_output primary
